@@ -1873,6 +1873,25 @@ class GenericIncars(object):
         inc = Incar(data)
         return GenericIncars(name="pbe", incar=inc, pot_type="POT_GGA_PAW_PBE")
 
+    def r2scan(self):
+        """Select GGA-PBE functional."""
+        data = dict(
+            PREC="Accurate",
+            ISMEAR=0,
+            IBRION=2,
+            METAGGA="R2SCAN",
+            LASPH=".TRUE.",
+            EDIFF="1E-7",
+            NSW=1,
+            NELM=400,
+            ISIF=2,
+            LCHARG=".FALSE.",
+            LWAVE=".FALSE.",
+        )
+        inc = Incar(data)
+        return GenericIncars(
+            name="r2scan", incar=inc, pot_type="POT_GGA_PAW_PBE")
+            
     def scan(self):
         """Select GGA-PBE functional."""
         data = dict(
